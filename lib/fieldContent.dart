@@ -7,7 +7,7 @@ class FieldContent extends StatelessWidget {
   final String name;
   final TextInputType type;
   FieldContent({required this.name, required this.type});
-
+  late String _value;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -36,9 +36,16 @@ class FieldContent extends StatelessWidget {
             maxLines: null,
             expands: true,
             keyboardType: type,
+            onChanged: (text) {
+              _value = text.toString();
+            },
           ),
         )
       ],
     );
+  }
+
+  String getValue() {
+    return _value;
   }
 }
