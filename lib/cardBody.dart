@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, use_key_in_widget_constructors, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'constants.dart';
 import 'fieldContent.dart';
@@ -71,7 +73,7 @@ class _BodyCardState extends State<BodyCard> {
                     GestureDetector(
                       onTap: () {
                         // myText = fieldContent.getValue();
-                        print(fieldContent.getValue());
+                        // print(fieldContent.getValue());
                       },
                       child: Container(
                         child: Center(
