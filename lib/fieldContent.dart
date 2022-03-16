@@ -5,7 +5,8 @@ import 'constants.dart';
 
 class FieldContent extends StatelessWidget {
   final String name;
-  FieldContent({required this.name});
+  final TextInputType type;
+  FieldContent({required this.name, required this.type});
 
   @override
   Widget build(BuildContext context) {
@@ -19,13 +20,24 @@ class FieldContent extends StatelessWidget {
           style: textStyle,
         ),
         SizedBox(
-          height: 5.0,
+          height: 10.0,
         ),
         Container(
           height: kTextFieldHeight,
-          color: kTextFieldColor,
-          // child: Text('Amir Siraj'),
-        ),
+          child: TextField(
+            decoration: InputDecoration(
+              hintText: name.toUpperCase(),
+              enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: kTextFieldColor)),
+              fillColor: kTextFieldColor,
+              filled: true,
+            ),
+            minLines: null,
+            maxLines: null,
+            expands: true,
+            keyboardType: type,
+          ),
+        )
       ],
     );
   }
