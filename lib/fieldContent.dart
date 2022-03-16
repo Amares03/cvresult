@@ -27,6 +27,7 @@ class FieldContent extends StatelessWidget {
           child: TextField(
             decoration: InputDecoration(
               hintText: name.toUpperCase(),
+              // hintStyle: TextStyle(),
               enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: kTextFieldColor)),
               fillColor: kTextFieldColor,
