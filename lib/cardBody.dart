@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'constants.dart';
 import 'fieldContent.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'databaseNetwork/addToDatabase.dart';
 // import 'package:firebase_core/firebase_core.dart';
 
 class BodyCard extends StatefulWidget {
@@ -12,6 +12,7 @@ class BodyCard extends StatefulWidget {
 }
 
 class _BodyCardState extends State<BodyCard> {
+  String? confermText;
   FieldContent fieldContentName = FieldContent(
     name: 'Full Name',
     type: TextInputType.name,
@@ -80,14 +81,17 @@ class _BodyCardState extends State<BodyCard> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        AddToDatabase(
-                                dbo: '22Y',
-                                name: fieldContentName.getValue(),
-                                nationality: fieldContentNationality.getValue(),
-                                passportNum: fieldContentPassportNum.getValue(),
-                                sex: 'male',
-                                phoneNum: 09123456)
-                            .addUser();
+                        AddToDatabase add = AddToDatabase(
+                            dbo: '22Y',
+                            name: fieldContentName.getValue(),
+                            nationality: fieldContentNationality.getValue(),
+                            passportNum: fieldContentPassportNum.getValue(),
+                            sex: 'male',
+                            phoneNum: 09123456);
+                        add.addUser();
+                        setState(() {
+                          confermText = add.text;
+                        });
                       },
                       child: Container(
                         child: Center(
@@ -102,40 +106,18 @@ class _BodyCardState extends State<BodyCard> {
                         height: kTextFieldHeight,
                       ),
                     ),
+                    Card(
+                      color: Colors.blue,
+                      child: Text(
+                        confermText.toString(),
+                        style: kButtonTextStyle,
+                      ),
+                    )
                   ],
                 ),
               ),
             )),
       ),
     );
-  }
-}
-
-class AddToDatabase {
-  CollectionReference users =
-      FirebaseFirestore.instance.collection('client_info');
-
-  final String name, dbo, nationality, passportNum, sex;
-  final int phoneNum;
-  AddToDatabase(
-      {required this.dbo,
-      required this.name,
-      required this.nationality,
-      required this.passportNum,
-      required this.sex,
-      required this.phoneNum});
-  Future<void> addUser() {
-    // Call the user's CollectionReference to add a new user
-    return users
-        .add({
-          'dbo': dbo,
-          'name': name,
-          'nationality': nationality,
-          'passportnum': passportNum,
-          'phonenum': phoneNum,
-          'sex': sex,
-        })
-        .then((value) => print("User Added"))
-        .catchError((error) => print("Failed to add user: $error"));
   }
 }
