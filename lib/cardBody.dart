@@ -81,12 +81,13 @@ class _BodyCardState extends State<BodyCard> {
                     GestureDetector(
                       onTap: () {
                         AddToDatabase(
-                            dbo: '22Y',
-                            name: fieldContentName.getValue(),
-                            nationality: fieldContentNationality.getValue(),
-                            passportNum: fieldContentPassportNum.getValue(),
-                            sex: 'male',
-                            phoneNum: 09123456);
+                                dbo: '22Y',
+                                name: fieldContentName.getValue(),
+                                nationality: fieldContentNationality.getValue(),
+                                passportNum: fieldContentPassportNum.getValue(),
+                                sex: 'male',
+                                phoneNum: 09123456)
+                            .addUser();
                       },
                       child: Container(
                         child: Center(
