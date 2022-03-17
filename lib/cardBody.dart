@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'constants.dart';
 import 'fieldContent.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:firebase_core/firebase_core.dart';
 
 class BodyCard extends StatefulWidget {
   @override
@@ -10,9 +12,33 @@ class BodyCard extends StatefulWidget {
 }
 
 class _BodyCardState extends State<BodyCard> {
-  FieldContent fieldContent = FieldContent(
+  FieldContent fieldContentName = FieldContent(
     name: 'Full Name',
     type: TextInputType.name,
+  );
+  FieldContent fieldContentNationality = FieldContent(
+    name: 'Nationality',
+    type: TextInputType.text,
+  );
+  FieldContent fieldContentPassportNum = FieldContent(
+    name: 'Passport Number',
+    type: TextInputType.text,
+  );
+  FieldContent fieldContentConfirmationNum = FieldContent(
+    name: 'Confirmation Number',
+    type: TextInputType.text,
+  );
+  FieldContent fieldContentCollectedDate = FieldContent(
+    name: 'Specimen Collected Date',
+    type: TextInputType.datetime,
+  );
+  FieldContent fieldContentResultDate = FieldContent(
+    name: 'Result Issued Date',
+    type: TextInputType.name,
+  );
+  FieldContent fieldContentResult = FieldContent(
+    name: 'Result',
+    type: TextInputType.text,
   );
 
   late String myText;
@@ -42,38 +68,25 @@ class _BodyCardState extends State<BodyCard> {
                       'Confirmation',
                       style: kTitleTextStyle,
                     ),
-                    fieldContent,
-                    FieldContent(
-                      name: 'Nationality',
-                      type: TextInputType.text,
-                    ),
-                    FieldContent(
-                      name: 'Passport Number',
-                      type: TextInputType.text,
-                    ),
-                    FieldContent(
-                      name: 'Confirmation Number',
-                      type: TextInputType.text,
-                    ),
-                    FieldContent(
-                      name: 'Specimen Collected Date',
-                      type: TextInputType.datetime,
-                    ),
-                    FieldContent(
-                      name: 'Result Issued Date',
-                      type: TextInputType.name,
-                    ),
-                    FieldContent(
-                      name: 'Result',
-                      type: TextInputType.text,
-                    ),
+                    fieldContentName,
+                    fieldContentNationality,
+                    fieldContentPassportNum,
+                    fieldContentConfirmationNum,
+                    fieldContentCollectedDate,
+                    fieldContentResultDate,
+                    fieldContentResult,
                     SizedBox(
                       height: 15.0,
                     ),
                     GestureDetector(
                       onTap: () {
-                        // myText = fieldContent.getValue();
-                        // print(fieldContent.getValue());
+                        AddToDatabase(
+                            dbo: '22Y',
+                            name: fieldContentName.getValue(),
+                            nationality: fieldContentNationality.getValue(),
+                            passportNum: fieldContentPassportNum.getValue(),
+                            sex: 'male',
+                            phoneNum: 09123456);
                       },
                       child: Container(
                         child: Center(
@@ -94,5 +107,34 @@ class _BodyCardState extends State<BodyCard> {
             )),
       ),
     );
+  }
+}
+
+class AddToDatabase {
+  CollectionReference users =
+      FirebaseFirestore.instance.collection('client_info');
+
+  final String name, dbo, nationality, passportNum, sex;
+  final int phoneNum;
+  AddToDatabase(
+      {required this.dbo,
+      required this.name,
+      required this.nationality,
+      required this.passportNum,
+      required this.sex,
+      required this.phoneNum});
+  Future<void> addUser() {
+    // Call the user's CollectionReference to add a new user
+    return users
+        .add({
+          'dbo': dbo,
+          'name': name,
+          'nationality': nationality,
+          'passportnum': passportNum,
+          'phonenum': phoneNum,
+          'sex': sex,
+        })
+        .then((value) => print("User Added"))
+        .catchError((error) => print("Failed to add user: $error"));
   }
 }

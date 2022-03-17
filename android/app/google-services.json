@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "804329596212",
+    "project_id": "cvresult",
+    "storage_bucket": "cvresult.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:804329596212:android:d2b6a52056865d82a6b161",
+        "android_client_info": {
+          "package_name": "com.example.cvresult"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "804329596212-sqc1psdf968ms71s53g0udnqm58ltu5s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuOWHkmVj2P2ylpjBrAXm2hbDALCSBfVQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "804329596212-sqc1psdf968ms71s53g0udnqm58ltu5s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
