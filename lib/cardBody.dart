@@ -105,13 +105,6 @@ class _BodyCardState extends State<BodyCard> {
                         height: kTextFieldHeight,
                       ),
                     ),
-                    Card(
-                      color: Colors.blue,
-                      child: Text(
-                        confermText.toString(),
-                        style: kButtonTextStyle,
-                      ),
-                    )
                   ],
                 ),
               ),
