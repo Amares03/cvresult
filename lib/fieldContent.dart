@@ -51,7 +51,7 @@ class FieldContent extends StatelessWidget {
     return _value;
   }
 
-  TextEditingController getController() {
-    return _controller;
+  String getController() {
+    return _controller.toString();
   }
 }

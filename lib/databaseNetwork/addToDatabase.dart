@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AddToDatabase {
   CollectionReference users = FirebaseFirestore.instance.collection('all_info');
-  String text = 'not added';
+  String? text;
   final String name,
       dbo,
       phone,
@@ -42,6 +42,6 @@ class AddToDatabase {
           'testPerformedBy': 'International Clinical Laburatory'
         })
         .then((value) => text = 'User Added')
-        .catchError((error) => print("Failed to add user: $error"));
+        .catchError((error) => text = 'Failed to add user: $error');
   }
 }
