@@ -13,33 +13,29 @@ class BodyCard extends StatefulWidget {
 
 class _BodyCardState extends State<BodyCard> {
   String? confermText;
-  FieldContent fieldContentName = FieldContent(
+  FieldContent fName = FieldContent(
     name: 'Full Name',
-    type: TextInputType.name,
   );
-  FieldContent fieldContentNationality = FieldContent(
-    name: 'Nationality',
-    type: TextInputType.text,
+  FieldContent fDbo = FieldContent(
+    name: 'DBO',
   );
-  FieldContent fieldContentPassportNum = FieldContent(
+  FieldContent fPassportNum = FieldContent(
     name: 'Passport Number',
-    type: TextInputType.text,
   );
-  FieldContent fieldContentConfirmationNum = FieldContent(
-    name: 'Confirmation Number',
-    type: TextInputType.text,
+  FieldContent fSex = FieldContent(
+    name: 'Sex',
   );
-  FieldContent fieldContentCollectedDate = FieldContent(
+  FieldContent fCollectedDate = FieldContent(
     name: 'Specimen Collected Date',
-    type: TextInputType.datetime,
   );
-  FieldContent fieldContentResultDate = FieldContent(
+  FieldContent fResultDate = FieldContent(
     name: 'Result Issued Date',
-    type: TextInputType.name,
   );
-  FieldContent fieldContentResult = FieldContent(
-    name: 'Result',
-    type: TextInputType.text,
+  FieldContent fPhoneNum = FieldContent(
+    name: 'Phone Number',
+  );
+  FieldContent fDrName = FieldContent(
+    name: 'Doctor Name',
   );
 
   late String myText;
@@ -69,30 +65,18 @@ class _BodyCardState extends State<BodyCard> {
                       'Confirmation',
                       style: kTitleTextStyle,
                     ),
-                    fieldContentName,
-                    fieldContentNationality,
-                    fieldContentPassportNum,
-                    fieldContentConfirmationNum,
-                    fieldContentCollectedDate,
-                    fieldContentResultDate,
-                    fieldContentResult,
+                    fName,
+                    fDbo,
+                    fPassportNum,
+                    fSex,
+                    fCollectedDate,
+                    fResultDate,
+                    fPhoneNum,
                     SizedBox(
                       height: 15.0,
                     ),
                     GestureDetector(
-                      onTap: () {
-                        AddToDatabase add = AddToDatabase(
-                            dbo: '22Y',
-                            name: fieldContentName.getValue(),
-                            nationality: fieldContentNationality.getValue(),
-                            passportNum: fieldContentPassportNum.getValue(),
-                            sex: 'male',
-                            phoneNum: 09123456);
-                        add.addUser();
-                        setState(() {
-                          confermText = add.text;
-                        });
-                      },
+                      onTap: () {},
                       child: Container(
                         child: Center(
                           child: Text(

@@ -5,9 +5,9 @@ import 'constants.dart';
 
 class FieldContent extends StatelessWidget {
   final String name;
-  final TextInputType type;
-  FieldContent({required this.name, required this.type});
+  FieldContent({required this.name});
   late String _value;
+  TextEditingController _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -24,7 +24,8 @@ class FieldContent extends StatelessWidget {
         ),
         Container(
           height: kTextFieldHeight,
-          child: TextField(
+          child: TextFormField(
+            controller: _controller,
             decoration: InputDecoration(
               hintText: name.toUpperCase(),
               // hintStyle: TextStyle(),
@@ -36,7 +37,7 @@ class FieldContent extends StatelessWidget {
             minLines: null,
             maxLines: null,
             expands: true,
-            keyboardType: type,
+            keyboardType: TextInputType.text,
             onChanged: (text) {
               _value = text.toString();
             },
@@ -48,5 +49,9 @@ class FieldContent extends StatelessWidget {
 
   String getValue() {
     return _value;
+  }
+
+  TextEditingController getController() {
+    return _controller;
   }
 }
