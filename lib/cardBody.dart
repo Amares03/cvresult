@@ -76,7 +76,15 @@ class _BodyCardState extends State<BodyCard> {
                       height: 15.0,
                     ),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        // AddToDatabase add = AddToDatabase(
+                        //     name: fName.getValue(),
+                        //     );
+                        // add.addUser();
+                        // setState(() {
+                        //   confermText = add.text;
+                        // });
+                      },
                       child: Container(
                         child: Center(
                           child: Text(

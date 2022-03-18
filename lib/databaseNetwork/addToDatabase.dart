@@ -1,8 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AddToDatabase {
-  CollectionReference users =
-      FirebaseFirestore.instance.collection('client_info');
+  CollectionReference users = FirebaseFirestore.instance.collection('all_info');
   String text = 'not added';
   final String name, dbo, nationality, passportNum, sex;
   final int phoneNum;
