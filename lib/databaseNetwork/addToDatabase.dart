@@ -44,4 +44,12 @@ class AddToDatabase {
         .then((value) => text = 'User Added')
         .catchError((error) => text = 'Failed to add user: $error');
   }
+
+  bool isAdded() {
+    if (text == 'User Added') {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

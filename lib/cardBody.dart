@@ -37,6 +37,7 @@ class _BodyCardState extends State<BodyCard> {
   FieldContent fDrName = FieldContent(
     name: 'Doctor Name',
   );
+  var formKey = GlobalKey<FormState>();
 
   late String myText;
   @override
@@ -65,44 +66,51 @@ class _BodyCardState extends State<BodyCard> {
                       'Confirmation',
                       style: kTitleTextStyle,
                     ),
-                    fName,
-                    fDbo,
-                    fPassportNum,
-                    fSex,
-                    fCollectedDate,
-                    fResultDate,
-                    fPhoneNum,
-                    fDrName,
-                    SizedBox(
-                      height: 15.0,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        AddToDatabase add = AddToDatabase(
-                            dbo: fDbo.getValue(),
-                            name: fName.getValue(),
-                            phone: fPhoneNum.getValue(),
-                            passportNum: fPassportNum.getValue(),
-                            sex: fSex.getValue(),
-                            collectedDate: fCollectedDate.getValue(),
-                            resultDate: fResultDate.getValue(),
-                            drName: fDrName.getValue());
-                        add.addUser();
-                        setState(() {
-                          confermText = add.text;
-                        });
-                      },
-                      child: Container(
-                        child: Center(
-                          child: Text(
-                            'Get Full Certification',
-                            style: kButtonTextStyle,
+                    Form(
+                      key: formKey,
+                      child: Column(
+                        children: [
+                          fName,
+                          fDbo,
+                          fPassportNum,
+                          fSex,
+                          fCollectedDate,
+                          fResultDate,
+                          fPhoneNum,
+                          fDrName,
+                          SizedBox(
+                            height: 15.0,
                           ),
-                        ),
-                        color: kButtonCardColor,
-                        margin: EdgeInsets.only(top: 5.0),
-                        padding: EdgeInsets.only(bottom: 10.0),
-                        height: kTextFieldHeight,
+                          GestureDetector(
+                            onTap: () {
+                              AddToDatabase add = AddToDatabase(
+                                  dbo: fDbo.getValue(),
+                                  name: fName.getValue(),
+                                  phone: fPhoneNum.getValue(),
+                                  passportNum: fPassportNum.getValue(),
+                                  sex: fSex.getValue(),
+                                  collectedDate: fCollectedDate.getValue(),
+                                  resultDate: fResultDate.getValue(),
+                                  drName: fDrName.getValue());
+                              add.addUser();
+                              setState(() {
+                                formKey.currentState!.reset();
+                              });
+                            },
+                            child: Container(
+                              child: Center(
+                                child: Text(
+                                  'Get Full Certification',
+                                  style: kButtonTextStyle,
+                                ),
+                              ),
+                              color: kButtonCardColor,
+                              margin: EdgeInsets.only(top: 5.0),
+                              padding: EdgeInsets.only(bottom: 10.0),
+                              height: kTextFieldHeight,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
