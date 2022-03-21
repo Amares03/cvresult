@@ -39,7 +39,8 @@ class AddToDatabase {
           'sex': sex,
           'specimenType': 'Nasopharngeal Swab',
           'testMethod': 'RT-PCR-QUALITATIVE Detection of nucleic Acid ',
-          'testPerformedBy': 'International Clinical Laburatory'
+          'testPerformedBy': 'International Clinical Laburatory',
+          'time':FieldValue.serverTimestamp()
         })
         .then((value) => text = 'User Added')
         .catchError((error) => text = 'Failed to add user: $error');
