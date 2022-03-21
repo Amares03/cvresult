@@ -83,19 +83,21 @@ class _BodyCardState extends State<BodyCard> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              AddToDatabase add = AddToDatabase(
-                                  dbo: fDbo.getValue(),
-                                  name: fName.getValue(),
-                                  phone: fPhoneNum.getValue(),
-                                  passportNum: fPassportNum.getValue(),
-                                  sex: fSex.getValue(),
-                                  collectedDate: fCollectedDate.getValue(),
-                                  resultDate: fResultDate.getValue(),
-                                  drName: fDrName.getValue());
-                              add.addUser();
-                              setState(() {
-                                formKey.currentState!.reset();
-                              });
+                              if (fName.getController().length > 3) {
+                                AddToDatabase add = AddToDatabase(
+                                    dbo: fDbo.getValue(),
+                                    name: fName.getValue(),
+                                    phone: fPhoneNum.getValue(),
+                                    passportNum: fPassportNum.getValue(),
+                                    sex: fSex.getValue(),
+                                    collectedDate: fCollectedDate.getValue(),
+                                    resultDate: fResultDate.getValue(),
+                                    drName: fDrName.getValue());
+                                add.addUser();
+                                setState(() {
+                                  formKey.currentState!.reset();
+                                });
+                              }
                             },
                             child: Container(
                               child: Center(

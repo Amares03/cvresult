@@ -33,6 +33,7 @@ class FieldContent extends StatelessWidget {
                   borderSide: BorderSide(color: kTextFieldColor)),
               fillColor: kTextFieldColor,
               filled: true,
+              contentPadding: EdgeInsets.all(10),
             ),
             minLines: null,
             maxLines: null,
@@ -52,6 +53,6 @@ class FieldContent extends StatelessWidget {
   }
 
   String getController() {
-    return _controller.toString();
+    return _controller.text;
   }
 }
